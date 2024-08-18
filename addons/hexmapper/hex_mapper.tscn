@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdpkthom8xsmn"]
+
+[ext_resource type="Script" path="res://addons/hexmapper/WorldHexGrid.gd" id="1_fxtd5"]
+[ext_resource type="PackedScene" uid="uid://d2gw0sdk4bskg" path="res://addons/hexmapper/hex_tile_static.tscn" id="2_1qy0v"]
+
+[node name="HexMapper" type="Node3D"]
+
+[node name="HexGrid" type="Node3D" parent="."]
+script = ExtResource("1_fxtd5")
+
+[node name="HexTileStatic" parent="." instance=ExtResource("2_1qy0v")]

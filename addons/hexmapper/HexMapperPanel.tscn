@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://df1d6554t6k3b"]
+
+[ext_resource type="Script" path="res://addons/hexmapper/MeshOptionButton.gd" id="1_gkid5"]
+
+[node name="HexMapperPanel" type="VBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "HexMapper"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Mesh"
+
+[node name="MeshOptionButton" type="OptionButton" parent="HBoxContainer"]
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "Load Mesh"
+popup/item_0/id = 0
+script = ExtResource("1_gkid5")
+
+[connection signal="item_selected" from="HBoxContainer/MeshOptionButton" to="HBoxContainer/MeshOptionButton" method="_on_item_selected"]

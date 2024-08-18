@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5vofr8t6wfxw"
+path="res://.godot/imported/building-watermill.obj-b3a8c8103d39fb7e3abad4a6df51cad5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-watermill.obj-b3a8c8103d39fb7e3abad4a6df51cad5.mesh"]
+
+source_file="res://addons/Models/OBJ format/building-watermill.obj"
+dest_files=["res://.godot/imported/building-watermill.obj-b3a8c8103d39fb7e3abad4a6df51cad5.mesh", "res://.godot/imported/building-watermill.obj-b3a8c8103d39fb7e3abad4a6df51cad5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

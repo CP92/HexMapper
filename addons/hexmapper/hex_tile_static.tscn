@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2gw0sdk4bskg"]
+
+[ext_resource type="Script" path="res://addons/hexmapper/HexTileStatic.gd" id="1_ro10k"]
+[ext_resource type="Script" path="res://addons/hexmapper/HexTileMesh.gd" id="2_fbq5c"]
+
+[node name="HexTileStatic" type="StaticBody3D"]
+script = ExtResource("1_ro10k")
+
+[node name="HexTileMesh" type="MeshInstance3D" parent="."]
+script = ExtResource("2_fbq5c")

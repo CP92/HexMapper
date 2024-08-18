@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://y660vf0djdi5"
+path="res://.godot/imported/building-mill.obj-ed7e023ae859f44b2c5a4a51deadc391.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-mill.obj-ed7e023ae859f44b2c5a4a51deadc391.mesh"]
+
+source_file="res://addons/Models/OBJ format/building-mill.obj"
+dest_files=["res://.godot/imported/building-mill.obj-ed7e023ae859f44b2c5a4a51deadc391.mesh", "res://.godot/imported/building-mill.obj-ed7e023ae859f44b2c5a4a51deadc391.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
