@@ -7,19 +7,98 @@
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "HexMapper"
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MeshOptionContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="MeshOptionContainer"]
 layout_mode = 2
 text = "Mesh"
 
-[node name="MeshOptionButton" type="OptionButton" parent="HBoxContainer"]
+[node name="MeshOptionButton" type="OptionButton" parent="MeshOptionContainer"]
 layout_mode = 2
 item_count = 1
 popup/item_0/text = "Load Mesh"
 popup/item_0/id = 0
 script = ExtResource("1_gkid5")
 
-[connection signal="item_selected" from="HBoxContainer/MeshOptionButton" to="HBoxContainer/MeshOptionButton" method="_on_item_selected"]
+[node name="MapDepthContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MapDepthContainer"]
+layout_mode = 2
+text = "Map Depth"
+
+[node name="LineEdit" type="LineEdit" parent="MapDepthContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+text = "1"
+max_length = 4
+expand_to_text_length = true
+
+[node name="HSlider" type="HSlider" parent="MapDepthContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 1000.0
+page = 2.0
+value = 1.0
+allow_greater = true
+allow_lesser = true
+
+[node name="MapWidthContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MapWidthContainer"]
+layout_mode = 2
+text = "Map Width"
+
+[node name="LineEdit" type="LineEdit" parent="MapWidthContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "1"
+
+[node name="HSlider" type="HSlider" parent="MapWidthContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 1000.0
+page = 2.0
+value = 1.0
+allow_greater = true
+allow_lesser = true
+
+[node name="MapShapeContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MapShapeContainer"]
+layout_mode = 2
+text = "Map Shape
+"
+
+[node name="OptionButton" type="OptionButton" parent="MapShapeContainer"]
+layout_mode = 2
+item_count = 4
+selected = 0
+popup/item_0/text = "Hexagon"
+popup/item_0/id = 0
+popup/item_1/text = "Rectangle"
+popup/item_1/id = 1
+popup/item_2/text = "Triangle"
+popup/item_2/id = 2
+popup/item_3/text = "Parallelogram"
+popup/item_3/id = 3
+
+[connection signal="item_selected" from="MeshOptionContainer/MeshOptionButton" to="MeshOptionContainer/MeshOptionButton" method="_on_item_selected"]
