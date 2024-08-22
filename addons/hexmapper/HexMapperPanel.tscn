@@ -101,4 +101,21 @@ popup/item_2/id = 2
 popup/item_3/text = "Parallelogram"
 popup/item_3/id = 3
 
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "Orientation"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="FlatButton" type="CheckButton" parent="HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Flat"
+
+[node name="PointyButton" type="CheckButton" parent="HBoxContainer"]
+layout_mode = 2
+text = "Pointy"
+
 [connection signal="item_selected" from="MeshOptionContainer/MeshOptionButton" to="MeshOptionContainer/MeshOptionButton" method="_on_item_selected"]

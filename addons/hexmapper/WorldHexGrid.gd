@@ -2,34 +2,46 @@ class_name WorldHexGrid
 extends Node3D
 
 const HEX_TILE = preload("res://addons/hexmapper/hex_tile_static.tscn")
+var hex_globals = get_node("/root/" + "HexGlobals")
 
-var map_height = 10
-var map_width = 10
-var map_orientation = 'flat'
 var map = {}
 var selected_layout
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	genHexMap() # Replace with function body.
-	#genParallelogramMap()
-	#genTriangleMap()
-	#genRectangleMap()
+	print(hex_globals.map_shape)
+	match hex_globals.map_shape:
+		"Hexagon":
+			genHexMap()
+		"Rectangle":
+			genRectangleMap()
+		"Triangle":
+			genTriangleMap()
+		"Parallelogram":
+			genParallelogramMap()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	match hex_globals.map_shape:
+		"Hexagon":
+			genHexMap()
+		"Rectangle":
+			genRectangleMap()
+		"Triangle":
+			genTriangleMap()
+		"Parallelogram":
+			genParallelogramMap()
 
 func genRectangleMap():
-	var map_size = max(map_width, map_height)
+	var map_size = max(hex_globals.map_width, hex_globals.map_depth)
 	
-	match map_orientation:
+	match hex_globals.orientation:
 		'flat':
 			print("Flat")
 			
-			for q in range(map_width):
+			for q in range(hex_globals.map_width):
 				var qoff = floor(q/2.0)
-				for r in range(-qoff, map_height - qoff):
+				for r in range(-qoff, hex_globals.map_depth - qoff):
 					var hex_tile = HEX_TILE.instantiate()
 					var mesh_aabb = hex_tile.get_mesh().global_transform * hex_tile.get_mesh().get_aabb()
 					
@@ -42,9 +54,9 @@ func genRectangleMap():
 					map[hex_tile] = null
 		'pointy':
 			print("Pointy")
-			for r in range(map_height):
+			for r in range(hex_globals.map_depth):
 				var roff = floor(r/2.0)
-				for q in range(-roff, map_width - roff):
+				for q in range(-roff, hex_globals.map_width - roff):
 					var hex_tile = HEX_TILE.instantiate()
 					var mesh = hex_tile.get_mesh()
 					var collider = hex_tile.get_collider()
@@ -68,7 +80,7 @@ func genRectangleMap():
 
 func genTriangleMap():
 	
-	var map_size = max(map_width, map_height)
+	var map_size = max(hex_globals.map_width, hex_globals.map_depth)
 	
 	for q in range(map_size + 1):
 		for r in range((map_size - q) + 1):
@@ -80,7 +92,7 @@ func genTriangleMap():
 		i.translate(Vector3(pixel.x, 0, pixel.y))
 
 func genParallelogramMap():
-	var map_size = max(map_width, map_height)
+	var map_size = max(hex_globals.map_width, hex_globals.map_depth)
 	
 	for q in range(map_size + 1):
 		for r in range(map_size + 1):
@@ -92,7 +104,7 @@ func genParallelogramMap():
 		i.translate(Vector3(pixel.x, 0, pixel.y))
 		
 func genHexMap():
-	var map_size = max(map_width, map_height)
+	var map_size = max(hex_globals.map_width, hex_globals.map_depth)
 	
 	for q in range(-map_size, map_size + 1):
 		var r1 = max(-map_size, -q - map_size)
@@ -107,7 +119,7 @@ func genHexMap():
 		i.translate(Vector3(pixel.x, 0, pixel.y))
 
 func buildMapCords(q, r):
-	match map_orientation:
+	match hex_globals.orientation:
 				'flat':
 					print("Flat")
 					
