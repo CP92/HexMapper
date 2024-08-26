@@ -15,10 +15,6 @@ run/main_scene="res://addons/hexmapper/hex_mapper.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
-
-HexGlobals="*res://addons/hexmapper/hex_globals.gd"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/hexmapper/plugin.cfg")

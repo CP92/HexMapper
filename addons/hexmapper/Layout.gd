@@ -5,7 +5,6 @@ static var orientation: Orientation
 static var size: Vector2
 static var origin: Vector2
 
-
 func _init(orientation: Orientation, size: Vector2, origin: Vector2) -> void:
 	self.orientation = orientation
 	self.size = size
@@ -24,6 +23,7 @@ func hex_to_pixel(h: Hex) -> Vector2:
 	var x: float = (M.f0 * h.q() + M.f1 * h.r()) * self.size.x
 	var y: float = (M.f2 * h.q() + M.f3 * h.r()) * self.size.y
 	return Vector2(x + self.origin.x, y + self.origin.y)
+
 func hex_corner_offset(corner: int) -> Vector2:
 	var size: Vector2 = self.size
 	var angle: float = 2.0 * PI * (self.orientation.start_angle + corner) / 6

@@ -8,3 +8,5 @@ script = ExtResource("1_ro10k")
 
 [node name="HexTileMesh" type="MeshInstance3D" parent="."]
 script = ExtResource("2_fbq5c")
+
+[node name="HexTileCollision" type="CollisionShape3D" parent="."]

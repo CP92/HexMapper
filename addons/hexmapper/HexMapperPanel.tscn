@@ -1,6 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://df1d6554t6k3b"]
 
-[ext_resource type="Script" path="res://addons/hexmapper/MeshOptionButton.gd" id="1_gkid5"]
+[sub_resource type="GDScript" id="GDScript_dep4s"]
+script/source = "extends OptionButton
+
+var _file_dialog
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass"
 
 [node name="HexMapperPanel" type="VBoxContainer"]
 
@@ -21,7 +33,24 @@ layout_mode = 2
 item_count = 1
 popup/item_0/text = "Load Mesh"
 popup/item_0/id = 0
-script = ExtResource("1_gkid5")
+script = SubResource("GDScript_dep4s")
+
+[node name="Mesh Orientation" type="Label" parent="."]
+layout_mode = 2
+text = "Mesh Orientation"
+horizontal_alignment = 1
+
+[node name="MeshOrientationContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MeshFlatButton" type="CheckButton" parent="MeshOrientationContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Flat"
+
+[node name="MeshPointyButton" type="CheckButton" parent="MeshOrientationContainer"]
+layout_mode = 2
+text = "Pointy"
 
 [node name="MapDepthContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 40)

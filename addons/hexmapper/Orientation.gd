@@ -23,10 +23,3 @@ func _init(f0: float, f1: float, f2: float, f3: float,
 				self.b2 = b2
 				self.b3 = b3
 				self.start_angle = start_angle
-
-func print_hex_to_pixel():
-	print(self.f0)
-	print(self.f1)
-	print(self.f2)
-	print(self.f3)
-	print(self.start_angle)

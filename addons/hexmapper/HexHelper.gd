@@ -34,7 +34,6 @@ static func hex_direction(direction: int):
 static func hex_neighbor(hex: Hex, direction: int) -> Hex:
 	return hex_add(hex, hex_direction(direction))
 
-
 static func hex_round(h: FractionalHex) -> Hex:
 	var q: int = int(round(h.q()))
 	var r: int = int(round(h.r()))

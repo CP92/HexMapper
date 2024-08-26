@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx8tivig8nd3d"]
+
+[ext_resource type="Script" path="res://addons/hexmapper/WorldHexGrid.gd" id="1_1dk4m"]
+
+[node name="HexMapper" type="Node3D"]
+
+[node name="HexGrid" type="Node3D" parent="."]
+script = ExtResource("1_1dk4m")
