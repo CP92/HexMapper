@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2gw0sdk4bskg"]
 
-[ext_resource type="Script" path="res://addons/hexmapper/HexTileStatic.gd" id="1_ro10k"]
-[ext_resource type="Script" path="res://addons/hexmapper/HexTileMesh.gd" id="2_fbq5c"]
+[ext_resource type="Script" path="res://addons/hexmapper/library/HexTileStatic.gd" id="1_hneho"]
+[ext_resource type="Script" path="res://addons/hexmapper/library/HexTileMesh.gd" id="2_p1ips"]
 
 [node name="HexTileStatic" type="StaticBody3D"]
-script = ExtResource("1_ro10k")
+script = ExtResource("1_hneho")
 
 [node name="HexTileMesh" type="MeshInstance3D" parent="."]
-script = ExtResource("2_fbq5c")
+script = ExtResource("2_p1ips")
 
 [node name="HexTileCollision" type="CollisionShape3D" parent="."]

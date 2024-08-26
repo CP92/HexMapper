@@ -111,12 +111,15 @@ func _on_mesh_option_selected(ind: int):
 			_file_dialog.size = Vector2(750, 750)
 			_file_dialog.connect("file_selected", Callable(self, "_on_FileDialog_file_selected"))
 			_file_dialog.show()
+		_:
+			get_hex_map().hex_mesh = _mesh_option_button.get_item_metadata(ind)
 
 func _on_FileDialog_file_selected(path):
 	var file = load(path)
 	get_hex_map().hex_mesh = file
 	var mesh_index := set_option_mesh_icon(file)
 	_mesh_option_button.select(mesh_index)
+	_mesh_option_button.set_item_metadata(mesh_index, file)
 	
 func set_option_mesh_icon(file) -> int:
 	var _mesh_arr : Array[Mesh]
