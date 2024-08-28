@@ -67,39 +67,48 @@ func _exit_tree() -> void:
 
 func _on_mesh_pointy_toggled():
 	_mesh_flat_button.set_pressed_no_signal(not _mesh_flat_button.button_pressed)
-	get_hex_map().mesh_orientation = "flat" if _mesh_flat_button.button_pressed else "pointy"
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").mesh_orientation = "flat" if _mesh_flat_button.button_pressed else "pointy"
 
 func _on_mesh_flat_toggled():
 	_mesh_pointy_button.set_pressed_no_signal(not _mesh_pointy_button.button_pressed)
-	get_hex_map().mesh_orientation = "flat" if _mesh_flat_button.button_pressed else "pointy"
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").mesh_orientation = "flat" if _mesh_flat_button.button_pressed else "pointy"
 
 func _on_flat_toggled():
 	_pointy_button.set_pressed_no_signal(not _pointy_button.button_pressed)
-	get_hex_map().orientation = "flat" if _flat_button.button_pressed else "pointy"
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").orientation = "flat" if _flat_button.button_pressed else "pointy"
 
 func _on_pointy_toggled():
 	_flat_button.set_pressed_no_signal(not _flat_button.button_pressed)
-	get_hex_map().orientation = "flat" if _flat_button.button_pressed else "pointy"
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").orientation = "flat" if _flat_button.button_pressed else "pointy"
 	
 func _on_depth_slider_updated(value: float):
-	get_hex_map().map_depth = value
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").map_depth = value
 	_map_depth_visual.text = str(value)
 	
 func _on_width_slider_updated(value: float):
-	get_hex_map().map_width = value
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").map_width = value
 	_map_width_visual.text = str(value)
 	
 func _on_map_depth_visual_changed(text: String):
-	get_hex_map().map_depth = int(text)
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").map_depth = int(text)
 	_map_depth_slider.value = int(text)
 	
 func _on_map_width_visual_changed(text: String):
-	get_hex_map().map_width = int(text)
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").map_width = int(text)
 	_map_width_slider.value = int(text)
 	
 func _on_map_shape_selected(index: int):
 	var text = _map_shape_option.get_item_text(index)
-	get_hex_map().map_shape = text
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").map_shape = text
 	
 func _on_mesh_option_selected(ind: int):
 	match ind:
@@ -112,11 +121,13 @@ func _on_mesh_option_selected(ind: int):
 			_file_dialog.connect("file_selected", Callable(self, "_on_FileDialog_file_selected"))
 			_file_dialog.show()
 		_:
-			get_hex_map().hex_mesh = _mesh_option_button.get_item_metadata(ind)
+			for mapper in get_hex_map():
+				mapper.get_node("HexGrid").hex_mesh = _mesh_option_button.get_item_metadata(ind)
 
 func _on_FileDialog_file_selected(path):
 	var file = load(path)
-	get_hex_map().hex_mesh = file
+	for mapper in get_hex_map():
+		mapper.get_node("HexGrid").hex_mesh = file
 	var mesh_index := set_option_mesh_icon(file)
 	_mesh_option_button.select(mesh_index)
 	_mesh_option_button.set_item_metadata(mesh_index, file)
@@ -131,18 +142,28 @@ func set_option_mesh_icon(file) -> int:
 	_mesh_option_button.add_icon_item(_2d_arr[0], "", option_index)
 	return option_index
 
-func get_hex_map() -> WorldHexGrid:
+func get_hex_map() -> Array:
 	var scene_root = EditorInterface.get_edited_scene_root()
-	if scene_root.is_class("Node3D"):
-		if scene_root is WorldHexGrid:
-			return scene_root
-		else:
-			var mapper = scene_root.get_node("HexMapper")
-			return mapper
-	return null
+	var mapper = get_tree().get_nodes_in_group("HexMapper")
+	#if scene_root.is_class("Node3D"):
+		#if scene_root is WorldHexGrid:
+			#return scene_root
+		#else:
+			#var mapper = scene_root.get_node("HexMapper")
+			#return mapper
+	return mapper if not mapper.is_empty() else null
 
 func set_map_values():
-	get_hex_map().map_shape = _map_shape_option.get_item_text(0)
-	get_hex_map().map_depth = _map_depth_slider.value
-	get_hex_map().map_width = _map_width_slider.value
-	get_hex_map().orientation = "flat"
+	for mapper in get_hex_map():
+		print(mapper.get_node("HexGrid"))
+		mapper.get_node("HexGrid").map_shape = _map_shape_option.get_item_text(0)
+		print(mapper.get_node("HexGrid").map_shape)
+		mapper.get_node("HexGrid").mesh_orientation = "flat" if _mesh_flat_button.button_pressed else "pointy"
+		mapper.get_node("HexGrid").map_depth = _map_depth_slider.value
+		mapper.get_node("HexGrid").map_width = _map_width_slider.value
+		mapper.get_node("HexGrid").orientation = "flat" if _flat_button.button_pressed else "pointy"
+	
+	#get_hex_map().map_shape = _map_shape_option.get_item_text(0)
+	#get_hex_map().map_depth = _map_depth_slider.value
+	#get_hex_map().map_width = _map_width_slider.value
+	#get_hex_map().orientation = "flat"

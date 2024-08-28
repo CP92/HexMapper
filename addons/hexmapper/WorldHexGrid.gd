@@ -15,6 +15,7 @@ var map = {}
 var selected_layout
 
 func _ready():
+	print(mesh_orientation)
 	match map_shape:
 		"Hexagon":
 			genHexMap()

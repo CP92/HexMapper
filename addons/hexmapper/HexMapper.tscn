@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx8tivig8nd3d"]
+[gd_scene load_steps=3 format=3 uid="uid://dx8tivig8nd3d"]
 
 [ext_resource type="Script" path="res://addons/hexmapper/WorldHexGrid.gd" id="1_1dk4m"]
+[ext_resource type="ArrayMesh" uid="uid://cfyx1hmfjh18c" path="res://addons/kaykit_medieval_hexagon_pack/Assets/obj/tiles/roads/hex_road_A.obj" id="2_vxida"]
 
-[node name="HexMapper" type="Node3D"]
+[node name="HexMapper" type="Node3D" groups=["HexMapper"]]
 
 [node name="HexGrid" type="Node3D" parent="."]
 script = ExtResource("1_1dk4m")
+hex_mesh = ExtResource("2_vxida")
+mesh_orientation = "pointy"
